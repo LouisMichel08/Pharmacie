@@ -11,6 +11,7 @@
 ###  IMPORTATIONS - Portée globale  ###
 ########+###############################
 
+
 # Importer le module sys nécessaire à l'exécution.
 import sys
 import PyQt5
