@@ -62,7 +62,7 @@ class Patient:
     Date_naiss = property(_get_date_naiss, _set_date_naiss)
 
     # Méthodes d'instance
-    def _calculerAge(self, p_date_naiss : date):
+    def calculerAge(self, p_date_naiss : date):
         """
         Calcule l'âge du patient
         :return:
@@ -76,7 +76,7 @@ class Patient:
         """
         Retourne True si le patient est une adulte sinon retourne false
         """
-        if self._calculerAge(self._date_naiss) >= 18:
+        if self.calculerAge(self._date_naiss) >= 18:
             return True
         else:
             return False

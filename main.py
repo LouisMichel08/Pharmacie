@@ -1,9 +1,9 @@
 ####################################################################################
 ###  420-2G4 - Programmation orientée objet
 ###  Travail: Exercice  gestion de la pharmacie
-###  Nom:
-###  No étudiant:
-###  No Groupe:
+###  Nom: Louis-Michel Monette
+###  No étudiant: 1565070
+###  No Groupe: 002
 ###  Description du fichier: Programme principal
 ####################################################################################
 
