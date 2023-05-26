@@ -24,6 +24,9 @@ class Fenetrerechercher(QtWidgets.QDialog, UI_PY.dialog_recherche.Ui_Dialog_Rech
 
     # Méthode qui ajoute les fournisseurs à la listview
     def ajouter_fournisseur(self):
+        """
+        Ajoute les noms de fournisseur à la comboBox
+        """
         Fournisseur.ls_fournisseur = []
         for elt in Fournisseur.ls_fournisseur:
             self.comboBox_nom_fournisseur.addItem(elt)
@@ -31,6 +34,9 @@ class Fenetrerechercher(QtWidgets.QDialog, UI_PY.dialog_recherche.Ui_Dialog_Rech
     @pyqtSlot()
     # Bouton qui affiche le contenu de la listview
     def on_pushButton_afficher_clicked(self):
+        """
+        Affiche les numéros de patient à la listview
+        """
         for elt in self.comboBox_nom_fournisseur:
             self.listView_list_patients_fournisseur.append(elt.Patient.Numero_patient)
 

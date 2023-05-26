@@ -14,6 +14,9 @@ from Classes.Patient import *
 
 # Cache les messages d'erreurs
 def cacher_labels_erreur(objet):
+    """
+    Cache les labels d'erreurs
+    """
     objet.label_erreur_code_fournisseur.setVisible(False)
     objet.label_erreur_nom_compagnie.setVisible(False)
 
@@ -31,6 +34,9 @@ class Fenetrefournisseur(QtWidgets.QDialog, UI_PY.dialog_fournisseur.Ui_Dialog):
 
     # Méthode qui ajoute les numéros de patient à la comboBox
     def ajouter_num(self):
+        """
+        Ajoute les numéros de patients à la comboBox
+        """
         Patient.ls_patients = []
         for elt in Patient.ls_patients:
             self.comboBox_numero_patient.addItem(elt)
@@ -38,6 +44,9 @@ class Fenetrefournisseur(QtWidgets.QDialog, UI_PY.dialog_fournisseur.Ui_Dialog):
     # Bouton qui permet d'ajouter un patient à la listview
     @pyqtSlot()
     def on_pushButton_ajouter_patient_clicked(self):
+        """
+        Ajoute un ou plusieurs numéro de patient à la listview
+        """
         # Cache les labels qui affichent les messages d'erreurs
         cacher_labels_erreur(self)
         for elt in self.comboBox_numero_patient.currentText():
@@ -46,22 +55,25 @@ class Fenetrefournisseur(QtWidgets.QDialog, UI_PY.dialog_fournisseur.Ui_Dialog):
     # Bouton qui permet de sérialiser les données entrées
     @pyqtSlot()
     def on_pushButton_serialiser_clicked(self):
+        """
+        Bouton qui ajoute à la liste des fournisseurs et sérialise dans un fichier json
+        """
         # Cache les labels qui affichent les messages d'erreurs
         cacher_labels_erreur(self)
-
+        # Instanciation de l'objet Fournisseur
         fourni = Fournisseur()
-
+        # Attributs de l'objet Fournisseur
         fourni.Code_fournisseur = self.lineEdit_code_fournisseur.text()
         fourni.Nom_compagnie = self.lineEdit_nom_compagnie.text().capitalize()
-
+        # Si le code du fournisseur n'est pas valide
         if fourni.Code_fournisseur == "":
             self.lineEdit_code_fournisseur.clear()
             self.label_erreur_code_fournisseur.setVisible(True)
-
+        # Si le nom de la compagnie n'est pas valide
         if fourni.Nom_compagnie == "":
             self.lineEdit_nom_compagnie.clear()
             self.label_erreur_nom_compagnie.setVisible(True)
-
+        # Si le code du fournisseur et le nom de la compagnie sont valides
         if fourni.Code_fournisseur != "" and fourni.Nom_compagnie != "":
             Fournisseur.ls_fournisseur.append(fourni)
             self.lineEdit_code_fournisseur.clear()

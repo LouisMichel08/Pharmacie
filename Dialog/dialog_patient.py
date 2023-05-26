@@ -14,6 +14,9 @@ from UI_PY.dialog_patient import *
 ######################################################
 
 def cacher_labels_erreur(objet):
+    """
+    Cache les labels d'erreurs
+    """
     objet.label_erreur_num_patient_existe.setVisible(False)
     objet.label_errreur_num_patient_existe_pas.setVisible(False)
     objet.label_erreur_num_patient_valider.setVisible(False)
@@ -29,6 +32,7 @@ class Fenetrepatient(QtWidgets.QDialog, UI_PY.dialog_patient.Ui_Dialog):
         super(Fenetrepatient, self).__init__(parent)
         self.setupUi(self)
         self.setWindowTitle("Boîte de dialogue Patient")
+        # Cache les labels d'erreurs
         cacher_labels_erreur(self)
 
     # Bouton qui ajoute un patient à la liste des patients
@@ -45,22 +49,22 @@ class Fenetrepatient(QtWidgets.QDialog, UI_PY.dialog_patient.Ui_Dialog):
         pat.Nom = self.lineEdit_nom_patient.text().capitalize()
         pat.Prenom = self.lineEdit_prenom_patient.text().capitalize()
         pat.Date_naiss = self.dateEdit_date_naiss_patient.date()
-
+        # Si le numéro de patient est invalide
         if pat.Numero_patient == "":
             self.lineEdit_numero_patient.clear()
             self.label_erreur_num_patient_valider.setVisible()
-
+        # Si le nom du patient est invalide
         if pat.Nom == "":
             self.lineEdit_nom_patient.clear()
-            self.label_erreur_nom_patient.setVisible()
-
+            self.label_erreur_nom_patient.setVisible(True)
+        # Si le prenom du patient est invalide
         if pat.Prenom == "":
             self.lineEdit_prenom_patient.clear()
-            self.label_erreur_prenom_patient.setVisible()
-
+            self.label_erreur_prenom_patient.setVisible(True)
+        # Si la date de naissance est invalide
         if pat.Date_naiss == "":
-            self.label_erreur_date_naiss.setVisible()
-
+            self.label_erreur_date_naiss.setVisible(True)
+        # Si tout les éléments sont valides, ajoute le patient à la liste
         if pat.Numero_patient != "" and pat.Nom != "" and pat.Prenom != "" and pat.Date_naiss != "":
             Patient.ls_patients.append(pat)
             self.lineEdit_numero_patient.clear()
@@ -82,22 +86,22 @@ class Fenetrepatient(QtWidgets.QDialog, UI_PY.dialog_patient.Ui_Dialog):
         pat.Nom = self.lineEdit_nom_patient.text().capitalize()
         pat.Prenom = self.lineEdit_prenom_patient.text().capitalize()
         pat.Date_naiss = self.dateEdit_date_naiss_patient.date()
-
+        # Si le numéro de patient est invalide
         if pat.Numero_patient == "":
             self.lineEdit_numero_patient.clear()
             self.label_erreur_num_patient_valider.setVisible()
-
+        # Si le nom du patient est invalide
         if pat.Nom == "":
             self.lineEdit_nom_patient.clear()
             self.label_erreur_nom_patient.setVisible()
-
+        # Si le prenom du patient est invalide
         if pat.Prenom == "":
             self.lineEdit_prenom_patient.clear()
             self.label_erreur_prenom_patient.setVisible()
-
+        # Si la date de naissance est invalide
         if pat.Date_naiss == "":
             self.label_erreur_date_naiss.setVisible()
-
+        # Si tout les éléments sont valides, supprime le patient de la liste
         if pat.Numero_patient != "" and pat.Nom != "" and pat.Prenom != "" and pat.Date_naiss != "":
             trouve = False
             for elt in Patient.ls_patients:
