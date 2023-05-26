@@ -1,7 +1,7 @@
 # Louis-Michel Monette
 
 # Pour le gestionnaire d'événement
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import pyqtSlot, QDate
 # Importer la boite de dialogue
 import UI_PY.dialog_patient
 from PyQt5 import QtWidgets
@@ -66,6 +66,7 @@ class Fenetrepatient(QtWidgets.QDialog, UI_PY.dialog_patient.Ui_Dialog):
             self.lineEdit_numero_patient.clear()
             self.lineEdit_nom_patient.clear()
             self.lineEdit_prenom_patient.clear()
+            self.dateEdit_date_naiss_patient.setDate(QDate(2000, 1, 1))
 
     # Bouton qui supprime un patient de la liste des patients
     @pyqtSlot()
