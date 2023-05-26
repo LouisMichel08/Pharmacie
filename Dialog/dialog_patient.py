@@ -1,3 +1,5 @@
+# Louis-Michel Monette
+
 # Pour le gestionnaire d'événement
 from PyQt5.QtCore import pyqtSlot
 # Importer la boite de dialogue
